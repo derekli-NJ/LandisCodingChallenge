@@ -13,7 +13,7 @@ ma = Marshmallow(app)
 class Accounts(db.Model):
     #Parameters for each account
     id = db.Column(db.Text, primary_key = True)
-    balance = db.Column(db.Text, unique = True)
+    balance = db.Column(db.Integer, unique = True)
     credit = db.Column(db.Integer, unique = True) 
     picture = db.Column(db.Text, unique = True)
     name_first = db.Column(db.Text, unique = True)
@@ -43,10 +43,10 @@ class Accounts(db.Model):
         self.tags = tags
 
     def serialize(self):
-    """
-    Returns a dictionary containing the parameters of the account
-    Useful for serializing into JSON
-    """
+        """
+        Returns a dictionary containing the parameters of the account
+        Useful for serializing into JSON
+        """
         return {
             'id' : self.id,
             'balance' : self.balance,
@@ -79,7 +79,7 @@ def hello_world():
     message = 'Start of front end'
     return (render_template('index.html', message = message))
 
-@app.route("/account/", methods = ["POST"])
+@app.route("/account", methods = ["POST"])
 def add_account():
     """
     POST request endpoint that creates a new account

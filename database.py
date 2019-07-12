@@ -37,7 +37,7 @@ data = format_data("accounts.jsonl")
 #SQL command to make a table
 sql_create_accounts_table= """ CREATE TABLE IF NOT EXISTS accounts(
                                         id text PRIMARY KEY,
-                                        balance text,
+                                        balance decimal,
                                         credit integer,
                                         picture text,
                                         name_first text,
